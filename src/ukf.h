@@ -62,6 +62,9 @@ public:
   ///* State dimension
   int n_x_;
 
+  ///* Number of sigma points
+  int n_sigma_;
+
   ///* Augmented state dimension
   int n_aug_;
 
