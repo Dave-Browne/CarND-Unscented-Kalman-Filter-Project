@@ -45,11 +45,11 @@ UKF::UKF() {
   // Predicted sigma points matrix
   Xsig_pred_ = MatrixXd(n_x_, n_sigma_);
 
-  // Process noise standard deviation longitudinal acceleration in m/s^2
-  std_a_ = 0.8;
+  // Process noise standard deviation longitudinal acceleration in m/s^2 
+  std_a_ = 0.83;
 
   // Process noise standard deviation yaw acceleration in rad/s^2
-  std_yawdd_ = 0.6;
+  std_yawdd_ = 0.55;
 
   // Laser measurement noise standard deviation position1 in m
   std_laspx_ = 0.15;
@@ -493,6 +493,6 @@ void UKF::UpdateRadar(MeasurementPackage meas_package) {
 void UKF::NormalizeAngle(double *pValue) {
   if (fabs(*pValue) > M_PI)
   {
-    *pValue -= round(*pValue / (2.0d * M_PI)) * (2.0d * M_PI);
+    *pValue = fmod( *pValue, M_PI );
   }
 }
